@@ -24,13 +24,13 @@ public class OrderController {
     private OrderDaoService orderDaoService;
 
 
-    //GET all users
+    //GET Live Orders
     @GetMapping(path = "/get-order-summary")
     public OrderSummary getOrderSummary(){
        return orderDaoService.findAll();
     }
 
-    //Add users
+
     @GetMapping("/order/{id}")
     public Order getUserById(@PathVariable(name = "id") final String id){
         return orderDaoService.findOne(id);

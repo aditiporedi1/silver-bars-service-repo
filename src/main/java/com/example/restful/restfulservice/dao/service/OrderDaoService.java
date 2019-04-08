@@ -22,7 +22,6 @@ public class OrderDaoService {
     public OrderSummary findAll(){
 
         List<OrderSummaryView> orderSummaryViews = orderRepository.getLiveOrderSummary();
-        System.out.println("Order Summary ________________________________"+orderSummaryViews.size());
         return convertToOrderSummary(orderSummaryViews);
     }
 
@@ -41,17 +40,12 @@ public class OrderDaoService {
            orderRepository.deleteById(userId);
            return true;
        }
-
        return false;
-
-
-
     }
 
     public  Order save(Order order){
         orderRepository.save(order);
         Order newOrder = orderRepository.findById(order.getUserId()).get();
         return newOrder;
-
     }
 }

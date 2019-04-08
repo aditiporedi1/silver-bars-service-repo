@@ -1,7 +1,11 @@
 package com.example.restful.restfulservice.doa.repository;
 
 ;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
+import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -22,7 +26,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = RestfulServiceApplication.class)
 public class OrderRepositoryTest {
@@ -47,10 +50,8 @@ public class OrderRepositoryTest {
     public void shouldGetLiveOrderSummary() {
 
         List<OrderSummaryView> orderSummaryViews = orderRepository.getLiveOrderSummary();
-
         assertNotNull(orderSummaryViews);
-
-
+        assertThat(orderSummaryViews.size(),is(5) );
     }
 
     private void setUpOrders(){
